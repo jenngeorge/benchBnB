@@ -1,19 +1,18 @@
 import {BenchConstants} from '../actions/bench_actions';
+import merge from 'lodash/merge';
 
 
-const defaultState = {
-  benches: {}
-};
 
-const BenchesReducer = (state = defaultState, action) => {
+const BenchesReducer = (state = {}, action) => {
   switch(action.type){
-    //...
-    case BenchConstants.REQUEST_BENCHES:
-      console.log('in request benches reducer');
-      return state;
+    case BenchConstants.RECEIVE_BENCHES:
+      return action.benches;
+
     default:
       return state;
   }
 };
+
+
 
 export default BenchesReducer;

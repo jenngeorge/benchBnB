@@ -7,7 +7,7 @@ class Api::BenchesController < ApplicationController
   def create
     @bench = Bench.new
     if @bench.save
-      # do something
+      render :show
     end
   end
 
