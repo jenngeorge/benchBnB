@@ -6,6 +6,20 @@ class MarkerManager {
 
     this._createMarkerFromBench = this._createMarkerFromBench.bind(this);
     this._benchesToAdd = this._benchesToAdd.bind(this);
+    this._markersToRemove = this._markersToRemove.bind(this);
+    this._removeMarker = this._removeMarker.bind(this);
+  }
+
+  _markersToRemove(){
+    return this.markers.filter( marker => {
+      return !this.benches.hasOwnProperty(marker.benchId);
+    });
+  }
+
+  _removeMarker(marker){
+    const idx = this.markers.indexOf( marker );
+    this.markers[idx].setMap(null);
+    this.markers.splice(idx, 1);
   }
 
   _benchesToAdd(benches){
@@ -46,6 +60,11 @@ class MarkerManager {
 
     for (let i = 0; i < newBenches.length; i++) {
       this._createMarkerFromBench(newBenches[i]);
+    }
+
+    const removeTheseMarkers = this._markersToRemove();
+    for (let j = 0; j < removeTheseMarkers.length; j++) {
+      this._removeMarker(removeTheseMarkers[j]);
     }
 
   }

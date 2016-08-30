@@ -9,10 +9,8 @@ class BenchIndex extends React.Component{
   //would add this but phase 4 said not to change?
 
   componentDidMount(){
-    // request benches from your API here
-    this.props.requestBenches();
-
   }
+  
   render(){
     // ...
     const benchIndexList = [];
